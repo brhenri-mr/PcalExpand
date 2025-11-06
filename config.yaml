@@ -1,0 +1,23 @@
+method:
+  2_ordem: 5
+coef:
+  gamma_f: 1
+  gamma_c: 1.4
+  gamma_s: 1.15
+  gamma_3: 1.1
+  
+materials: 
+  concrete:
+    fck: 50
+  steel:
+    fyk: 500
+    mod_es: 210
+
+elemento:
+  L: 2700
+  vinculacao: 1 #tipo_vinculacao: 0=secao-unica, 1=Bi-rotulado, 2=Engaste-livre
+  secao:
+    tipo_secao: "circular vazada" 
+  dim_x: 90
+  dim_y: 90
+  hole: 60

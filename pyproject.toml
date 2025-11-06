@@ -1,0 +1,26 @@
+[project]
+name = "pacal"
+version = "0.1.0"
+description = ""
+authors = [
+    {name = "brhenri-mr",email = "superbr55@gmail.com"}
+]
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "pandas (>=2.3.3,<3.0.0)",
+    "numpy (>=2.3.4,<3.0.0)",
+    "jpype1 (>=1.6.0,<2.0.0)",
+    "matplotlib (>=3.10.7,<4.0.0)",
+    "openpyxl (>=3.1.5,<4.0.0)",
+    "psutil (>=7.1.2,<8.0.0)",
+    "pyyaml (>=6.0.3,<7.0.0)",
+]
+
+[tool.poetry]
+packages = [{include = "pacal", from = "src"}]
+
+
+[build-system]
+requires = ["poetry-core>=2.0.0,<3.0.0"]
+build-backend = "poetry.core.masonry.api"
