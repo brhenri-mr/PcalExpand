@@ -1,5 +1,6 @@
 method:
   2_ordem: 5
+  fluencia: 2
 coef:
   gamma_f: 1
   gamma_c: 1.4

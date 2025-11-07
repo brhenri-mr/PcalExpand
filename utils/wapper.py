@@ -98,7 +98,7 @@ class PCalcEngine:
         dados.secao.setL(self.config['elemento']['L'])
 
     
-    def _configurar_materiais(self, dados: Any, metodo_seg_ord:int=5) :
+    def _configurar_materiais(self, dados: Any) :
         """
         Configura propriedades dos materiais
         
@@ -111,7 +111,7 @@ class PCalcEngine:
         dados.config.setFck(self.config['materials']['concrete']['fck']*0.010)   # MPa → tf/cm²
         dados.config.setFyk(self.config['materials']['steel']['fyk']*0.010)   # MPa → tf/cm²
         dados.config.setModEs(self.config['materials']['steel']['mod_es']*10)     # GPa → tf/cm²
-        dados.config.setMetodoSegOrd(metodo_seg_ord)  
+        dados.config.setMetodoSegOrd(self.config['method']['2_ordem'])  
 
 
     def _configurar_parametros(self, dados: Any, 
@@ -125,7 +125,7 @@ class PCalcEngine:
         dados.config.setGamaS(self.config['coef']['gamma_s'])
         dados.config.setGamaF3(self.config['coef']['gamma_3'])
 
-        dados.config.setConsiderarFluencia(1)
+        dados.config.setConsiderarFluencia(self.config['method']['fluencia'])
 
         dados.config.setNSecao(400)
         #dados.config.setNGraficoMomCurv(50)
@@ -164,7 +164,7 @@ class PCalcEngine:
         dados.secao.setYm(hy / 2.0)
         
 
-    def configurar_secao_circular(self, dados: Any, diametro: float, tipo_vinculacao: int = 0):
+    def configurar_secao_circular(self, dados: Any, diametro: float, tipo_vinculacao:int = 0):
         """
         Configura uma seção circular
         
@@ -176,8 +176,8 @@ class PCalcEngine:
         dados.secao.setTipoSecao("Circular")
         dados.secao.setHx(diametro)
         dados.secao.setHy(diametro)
-        dados.secao.setHx1(diametro)  # ← ADICIONE ISSO!
-        dados.secao.setHy1(diametro)  # ← E ISSO!
+        dados.secao.setHx1(diametro) 
+        dados.secao.setHy1(diametro) 
         dados.secao.setTipoVinculacao(tipo_vinculacao)
         
         # Calcula propriedades geométricas
@@ -211,7 +211,7 @@ class PCalcEngine:
         # Calcula propriedades geométricas
         raio = diametro*0.5
         area = math.pi*raio**2 - 0.25*math.pi*(interno)**2
-        ix = 0.25*math.pi*(raio**4)- 0.25*math.pi*((interno/2)**4)
+        ix = 0.25*math.pi*(raio**4) - 0.25*math.pi*((interno/2)**4)
         
         dados.secao.setAreaAc(area)
         dados.secao.setIX(ix)
@@ -463,6 +463,7 @@ class PCalcEngine:
 
 
         if esforcos:
+            print(esforcos)
             self.adicionar_esforcos(dados, esforcos)
             n_comb = len(esforcos)
         else:

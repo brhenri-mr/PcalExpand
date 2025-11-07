@@ -15,10 +15,14 @@ for i, path in enumerate(sorted(glob('*.json'), key=ordenar)):
         [fs_total.append(el) for el in json.load(arquivo)['fs']]
 
 
-PATH = r'excel\Pilares DAT.xlsx'
-esforcos, combine, frame = init_data(PATH)
+PATH = r'excel\Esforços estacas.xlsx'
+esforcos, combine, frame = init_data(PATH, lim=5)
+print(len(esforcos))
+
 if len(esforcos) == len(fs_total):
     print('Dimensões Corretas!')
     create_xlsx(fs_total, frame=frame, combine=combine, esforcos=esforcos)
     
-
+else:
+    print(f'{len(esforcos)}!={len(fs_total)}')
+    print('dimensoes não batem')

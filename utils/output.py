@@ -13,14 +13,13 @@ def create_xlsx(resultados_fs, frame, combine, esforcos):
 
 
     for label in range(11):
-        df[f'{round(label*0.1, 1)}L'] = [el[label] for el in resultados_fs]
+        df[f'{round(label*0.1, 1)}L'] = [el[label] if 10000000000 != el[label] else "Ok!" for el in resultados_fs]
 
     verificados = []
     maximos = []
     mininumo = []
 
     for el in resultados_fs:
-
         verificados.append(not (False in [fs > 1 if isinstance(fs, (int, float)) else False for fs in el]))
         maximos.append(max(el))
         mininumo.append(min(el))

@@ -99,13 +99,13 @@ if __name__ == '__main__':
     print("="*70)
     
 
-    PATH = r'excel\Pilares DAT.xlsx'
+    PATH = r'excel\Esforços estacas.xlsx'
     TAMANHO_LOTE = 100  # Ajuste conforme necessário
 
     # Prepara lotes
     
     print(f"📦 Preparando lotes de {TAMANHO_LOTE} cálculos...")
-    lotes = preparar_lotes(PATH, tamanho_lote=TAMANHO_LOTE)
+    lotes = preparar_lotes(PATH, tamanho_lote=TAMANHO_LOTE, lim=5)
     print(f"✓ {len(lotes)} lotes preparados - total de {len(lotes)*TAMANHO_LOTE}\n")
     
     # Executa lotes sequencialmente

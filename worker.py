@@ -41,7 +41,6 @@ def processar_lote(lote_data):
             try:
                 resultado_container[0] = engine.calcular_envoltoria(
                     diametro_mm=32,
-                    nx=4, ny=4,
                     d_linha=8,
                     n_barras=16,
                     esforcos=[el]
