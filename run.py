@@ -68,11 +68,11 @@ if __name__ == '__main__':
 
     print("-" * 70)
 
-    esforcos, combine, frame = init_data(r'excel\Pilares DAT.xlsx')
-
-    fs, sucessos, falhas, resultado = run_analysis(engine, esforcos[:90], 32, (16, 0))
+    esforcos, combine, frame = init_data(r'excel\Pilares 07.11.xlsx')
+    print(esforcos)
+    fs, sucessos, falhas, resultado = run_analysis(engine, [esforcos[3]], 16, (8, 0))
 
     print(f"\nSucessos: {len(sucessos)} | Falhas: {len(falhas)}")
-    print(resultado)
+    print(fs)
     #create_xlsx(fs, frame=frame[:80], combine=combine[:80], esforcos=esforcos[:80])
-    plot_situation(resultado['curvas_mr'], resultado['esforco'])
+    #plot_situation(resultado['curvas_mr'], resultado['esforco'])

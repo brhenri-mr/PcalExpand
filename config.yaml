@@ -1,5 +1,5 @@
 method:
-  2_ordem: 5
+  2_ordem: 4
   fluencia: 2
 coef:
   gamma_f: 1
@@ -9,16 +9,16 @@ coef:
   
 materials: 
   concrete:
-    fck: 50
+    fck: 40
   steel:
     fyk: 500
     mod_es: 210
 
 elemento:
-  L: 2700
+  L: 1000 #cm
   vinculacao: 1 #tipo_vinculacao: 0=secao-unica, 1=Bi-rotulado, 2=Engaste-livre
   secao:
-    tipo_secao: "circular vazada" 
-  dim_x: 90
-  dim_y: 90
-  hole: 60
+    tipo_secao: "circular" 
+  dim_x: 120
+  dim_y: 120
+  hole: 0

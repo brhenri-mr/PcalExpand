@@ -15,8 +15,8 @@ for i, path in enumerate(sorted(glob('*.json'), key=ordenar)):
         [fs_total.append(el) for el in json.load(arquivo)['fs']]
 
 
-PATH = r'excel\Esforços estacas.xlsx'
-esforcos, combine, frame = init_data(PATH, lim=5)
+PATH = r'excel\24.11 pilar.xlsx'
+esforcos, combine, frame = init_data(PATH)
 print(len(esforcos))
 
 if len(esforcos) == len(fs_total):

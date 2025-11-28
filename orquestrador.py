@@ -1,9 +1,9 @@
 import subprocess
-import pandas as pd
 import time
 import json
 import os
-from utils.extract import preparar_lotes, init_data
+from utils.extract import init_data
+from utils.preparation import preparar_lotes
 from utils.output import create_xlsx
 from utils.pos_processing import clear_folder
 
@@ -98,14 +98,14 @@ if __name__ == '__main__':
     print("ORQUESTRADOR DE CÁLCULOS")
     print("="*70)
     
-
-    PATH = r'excel\Esforços estacas.xlsx'
+    PATH = r'excel\pILARES ULTIMO.xlsx'
+    LIM = 100_000
     TAMANHO_LOTE = 100  # Ajuste conforme necessário
 
     # Prepara lotes
     
     print(f"📦 Preparando lotes de {TAMANHO_LOTE} cálculos...")
-    lotes = preparar_lotes(PATH, tamanho_lote=TAMANHO_LOTE, lim=5)
+    lotes = preparar_lotes(PATH, tamanho_lote=TAMANHO_LOTE)
     print(f"✓ {len(lotes)} lotes preparados - total de {len(lotes)*TAMANHO_LOTE}\n")
     
     # Executa lotes sequencialmente
@@ -128,25 +128,20 @@ if __name__ == '__main__':
     tempo_total = time.time() - inicio_total
     
     # Consolida resultados
-    print("\n" + "="*70)
-    print("📊 CONSOLIDANDO RESULTADOS")
     print("="*70)
     
     resultado_final = consolidar_resultados(resultados_lotes)
     
     print(f"\n✅ Sucessos: {len(resultado_final['sucessos'])}")
     print(f"❌ Falhas: {len(resultado_final['falhas'])}")
-    print(f"⏱️  Tempo total: {tempo_total:.1f}s")
-    print(f"⏱️  Tempo médio por lote: {tempo_total/len(lotes):.1f}s")
     
     # Gera planilha final
     print("\n📄 Gerando planilha final...")
 
-    
     # Reconstrói dados completos
     esforcos, combine, frame = init_data(PATH)
-    #create_xlsx(resultado_final['fs'], frame=frame, combine=combine, esforcos=esforcos)
-    #clear_folder()
+    create_xlsx(resultado_final['fs'], frame=frame, combine=combine, esforcos=esforcos, name=PATH.replace('.xlsx', '').split('\\')[-1])
+    clear_folder()
 
     print("✅ PROCESSAMENTO COMPLETO!")
     print("="*70)

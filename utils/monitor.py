@@ -1,7 +1,4 @@
-import subprocess
 from collections import Counter
-import sys
-
 
 # Adicione esta função antes do loop
 def verificar_travamento(timeout=10):

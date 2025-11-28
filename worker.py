@@ -1,9 +1,6 @@
 import sys
 import json
 import time
-import warnings
-import os
-import psutil
 from threading import Thread
 from utils.wapper import PCalcEngine
 from utils.misc import matar_todos_java
@@ -40,9 +37,9 @@ def processar_lote(lote_data):
         def executar():
             try:
                 resultado_container[0] = engine.calcular_envoltoria(
-                    diametro_mm=32,
+                    diametro_mm=25,
                     d_linha=8,
-                    n_barras=16,
+                    n_barras=10,
                     esforcos=[el]
                 )
             except Exception as e:

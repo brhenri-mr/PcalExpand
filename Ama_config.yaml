@@ -1,0 +1,24 @@
+method:
+  2_ordem: 5
+  fluencia: 2
+coef:
+  gamma_f: 1 # COMBINACOES
+  gamma_c: 3.1 #CONCRETO
+  gamma_s: 1.15
+  gamma_3: 1.1
+  
+materials: 
+  concrete:
+    fck: 30
+  steel:
+    fyk: 500
+    mod_es: 210
+
+elemento:
+  L: 0 #cm
+  vinculacao: 0 #tipo_vinculacao: 0=secao-unica, 1=Bi-rotulado, 2=Engaste-livre
+  secao:
+    tipo_secao: "circular" 
+  dim_x: 150
+  dim_y: 150
+  hole: 0
